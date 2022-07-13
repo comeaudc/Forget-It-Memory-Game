@@ -10,12 +10,45 @@
         <script defer src="java/main.js"></script>
     </head>
     <body>
-        <div id="start"></div>
+        <div class="start" id="startup">
+            <h1 class="banner">Forget About It!</h1>
+            <h2>This game was designed to test you noggin and your patience.</h2>
+            <button id="next">Next</button>
+        </div>
+        <div id="play">
+            <h1 class="banner">How To Play:</h1>
+                <ol>
+                    <li>Enter player names when prompted.</li>
+                    <li>Player located on lefthand side goes first.</li>
+                    <li>Click on 2 squares to reveal what is underneath.</li>
+                    <li>If they match, player gains 10 points and is allowed to choose again.</li>
+                    <li>If they do not match, next player goes.</li>
+                    <li>When all tiles are flipped player with the most points wins!</li>
+                </ol>
+            <button id="ready">Ready to Play?</button>
+        </div>
+        <div id="players">
+            <h1>Players</h1>
+            <h2>Player 1 Name:</h2>
+            <input type="text" name="Player1" id="playerName1" placeholder="Player 1">
+            <h2>Player 2 Name:</h2>
+            <input type="text" name="Player2" id="playerName2" placeholder="Player 2">
+            <div>
+                <h2>Game Pieces</h2>
+                <input type="radio" id="colors" name="type" value="colors">
+                <label for="colors">Colors</label>
+                <input type="radio" id="symbols" name="type" value="images">
+                <label for="symbols">Symbols</label>
+            </div>
+            <button id="submit" type="submit">Submit</button>
+            
+        </div>
+
         <div id="main">
             <section id="grid-container"></section>
             <div id="score">    
-                <h2 class="player player1">Player 1: <span id="player1">0</span></h2>
-                <h2 class="player player2">Player 2: <span id="player2">0</span></h2>
+                <h2 class="player player1"><span id="player1name"></span> <span id="player1"></span></h2>
+                <h2 class="player player2"><span id="player2name"></span> <span id="player2"></span></h2>
             </div>
         </div>
         <div id="winner"></div>

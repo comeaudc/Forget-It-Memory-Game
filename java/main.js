@@ -3,13 +3,67 @@ const section = document.querySelector('section')
 const timer = document.getElementById('timer')
 const player1 = document.getElementById('player1')
 const player2 = document.getElementById('player2')
+const player1name = document.getElementById('player1name')
+const player2name = document.getElementById('player2name')
+const players = document.getElementById('players')
+const startup = document.getElementById('startup')
+const next = document.getElementById('next')
+const rules = document.getElementById('play')
+const submit = document.getElementById('submit')
+const ready = document.getElementById('ready')
+const title1 = document.getElementById('playerName1')
+const title2 = document.getElementById('playerName2')
+const type = document.getElementsByName('type')
+
+//click events for startup
+next.focus()
+next.addEventListener('click', (evt) => {
+    startup.classList.add('inactive')
+    rules.classList.add('active')
+    ready.focus()
+})
+ready.addEventListener('click', (evt) => {
+    rules.classList.replace('active', 'inactive')
+    players.classList.add('active')
+    title1.focus()
+})
+submit.addEventListener('click', (evt) =>{
+    const person1 = title1.value;
+    const person2 = title2.value;
+    for(let i = 0; i < type.length; i++) {
+        if (type[i].checked){
+            let version = type[i].value
+            if (version == "colors") {
+                generateDeck(colors)
+            }
+            else{
+                generateDeck(images)
+            }
+        }
+    }
+    if(person1 == '') {
+        player1name.textContent = 'Player 1:'
+    }
+    else{
+        player1name.textContent = person1 + ':'
+    }
+    if(person2 == '') {
+        player2name.textContent = 'Player 2:'
+    }
+    else{
+        player2name.textContent = person2 + ':'
+    }
+    player1.textContent = 0
+    player2.textContent = 0
+    players.classList.add('inactive')     
+})
 
 //Variables for score keeping
 var player1Score = 0;
 var player2Score = 0;
 
-//Make array of objects to guess
-const images = () => [
+//Make array of objects to guess 
+const images = () => [  //16 tile
     {imgSource: 'images/airplane.png', name: 'airplane'},
     {imgSource: 'images/cat.png', name: 'cat'},
     {imgSource: 'images/dog.png', name: 'dog'},
@@ -24,7 +78,7 @@ const images = () => [
     {imgSource: 'images/mushroom.png', name: 'mushroom'},
 ];
 
-const colors = () => [
+const colors = () => [  //16 tile
     {imgSource: 'images/orange.jpg', name: 'orange'},
     {imgSource: 'images/red.jpg', name: 'red'},
     {imgSource: 'images/green.jpg', name: 'green'},
@@ -124,4 +178,3 @@ function points(firstTurn) {
 function switchTurn() {
     firstTurn = !firstTurn
 }
-generateDeck(colors)

@@ -1,0 +1,35 @@
+# Forget About It - A Memory Game
+
+## Getting Started
+ These inscructions will help you get a copy of the project up and running on your local machine.
+
+ ### Prerequisites:
+ You will need:
+ * Any text editor
+ * [git](https://git-scm.com/downloads)  
+ 
+ To clone from GitHub Repository type the following code into your text editor terminal:
+ `
+git clone https://github.com/comeaudc/Forget-It-Memory-Game.git
+ `
+
+  Here is a link to the repository on [GitHub](https://github.com/comeaudc/Forget-It-Memory-Game.git)  
+ The clone will appear in your local terminal
+
+  ## To Run Game:
+ 1. Right click on index.html
+ 2. Select **_Open With_** and choose prefered browser
+
+
+## Attributes
+* "Plane icons created by [Konkapp - Flaticon](https://www.flaticon.com/free-icons/plane)
+* Motorcycle icons created by [Freepik - Flaticon](https://www.flaticon.com/free-icons/motorcycle)
+* Dinosaur icons created by [Dooder - Flaticon](https://www.flaticon.com/free-icons/dinosaur)
+* Cat icons created by [Freepik - Flaticon](https://www.flaticon.com/free-icons/cat)
+* Dog icons created by [AomAm - Flaticon](https://www.flaticon.com/free-icons/dog)
+* Mario icons created by Those [Icons - Flaticon](https://www.flaticon.com/free-icons/mario" title="mario icons)
+
+
+
+
+

@@ -39,7 +39,13 @@ html, body{
     position: relative;
     transform-style: preserve-3d;
     transition: 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: black, 0px, 10px, 15px;
+    border-radius: 25px;
+    box-shadow: black 0px 10px 15px;
+}
+
+.square > img{
+    border-radius: 25px;
+    transform: rotate(180deg);
 }
 
 .color{
@@ -56,48 +62,85 @@ html, body{
     background-color: lightgray;
     backface-visibility: hidden;
     pointer-events: none;
+    border-radius: 25px;
 }
 
 .toggleSquare{
     transform: rotateX(180deg);
 }
 
-#start {
-    position: relative;
-    transform: translate(-50%, -50%);
+.start {
+    position: fixed;
     top: 50%;
     left: 50%;
-    width: 1000px;
-    max-width: 80%;
-    height: 1000px;
-    max-height: 80%;
-    z-index: 9;
-    background-color: green;
-}
-
-#start .content{
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    max-width: 85%;
+    height: 1000px;
+    max-height: 65%;
+    z-index: 1;
+    transition: all 700ms ease-in;
+    background-color: green;
+    border-radius: 25px;
+    box-shadow: 0px 10px 15px black;
 }
 
-.start-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    transition: all 0.5s;
-    transform: translateX(100%); /*means next item to be loaded is allthe way to the right */
-    z-index: 10;
-    opacity: 0;
+#play {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 85%;
+    height: 700px;
+    max-height: 65%;
+    z-index: 1;
+    transition: all 1000ms ease-in;
+    background-color: green;
+    border-radius: 25px;
+    box-shadow: 0px 10px 15px black;
 }
 
-.current{
-    transform: translateX(0); /*shows in the center */
-    z-index: 20;
-    opacity: 1;
+#players {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 80%;
+    height: 700px;
+    max-height: 65%;
+    z-index: 35;
+    transition: all 1000ms ease-in;
+    background-color: green;
+    border-radius: 25px;
+    box-shadow: 0px 10px 15px black;
 }
-.leaving{
-    transform: translateX(-100%);/*moves to the left */
-    opacity: 0;
+
+.start.inactive{
+    transform: translate(-200%, -50%);
+}
+#play.active{
+    transform: translate(-50%, -50%);
+}
+#play.inactive{
+    transform: translate(-200%, -50%);
+}
+#players.active {
+    transform: translate(-50%, -50%);
+}
+#players.inactive {
+    transform: translate(-200%, -50%);
 }
