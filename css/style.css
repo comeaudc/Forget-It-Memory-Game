@@ -26,10 +26,25 @@ html, body{
     max-width: 40%;
     height: 100px;
 }
+.grid-container.grid-container-small{
+    display: grid;
+    grid-template-columns: repeat(2, 8rem);
+    grid-template-rows:  repeat(3, 8rem);
+    gap: 1.5em;
+    perspective: 800px;
+}
 
-#grid-container {
+.grid-container {
     display: grid;
     grid-template-columns: repeat(4, 8rem);
+    grid-template-rows:  repeat(3, 8rem);
+    gap: 1em;
+    perspective: 800px;
+}
+
+.grid-container.grid-container-large{
+    display: grid;
+    grid-template-columns: repeat(6, 8rem);
     grid-template-rows:  repeat(3, 8rem);
     gap: 1em;
     perspective: 800px;
@@ -79,7 +94,7 @@ html, body{
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 85%;
+    max-width: 80%;
     height: 1000px;
     max-height: 65%;
     z-index: 1;
@@ -89,7 +104,7 @@ html, body{
     box-shadow: 0px 10px 15px black;
 }
 
-#play {
+.play {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -99,7 +114,7 @@ html, body{
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 85%;
+    max-width: 80%;
     height: 700px;
     max-height: 65%;
     z-index: 1;
@@ -132,10 +147,10 @@ html, body{
 .start.inactive{
     transform: translate(-200%, -50%);
 }
-#play.active{
+.play.active{
     transform: translate(-50%, -50%);
 }
-#play.inactive{
+.play.inactive{
     transform: translate(-200%, -50%);
 }
 #players.active {
@@ -144,3 +159,41 @@ html, body{
 #players.inactive {
     transform: translate(-200%, -50%);
 }
+
+#statusBoard {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -200%) scale(0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 85%;
+    height: 700px;
+    max-height: 65%;
+    z-index: 1;
+    transition: all 1000ms ease-in;
+    background-color: green;
+    border-radius: 25px;
+    box-shadow: 0px 10px 15px black;
+}
+
+#statusBoard.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#dropdowns{
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+    width: 80%;
+}
+.drop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .5rem;
+}
+ 
