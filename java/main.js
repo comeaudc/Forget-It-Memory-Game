@@ -18,6 +18,8 @@ const type = document.getElementsByName('type')
 const difficulty = document.getElementById('difficulty')
 const statusBoard = document.getElementById('statusBoard')
 const focus1 = document.getElementById('focus')
+const one = document.getElementById('one')
+const two = document.getElementById('two')
 
 //click events for startup
 next.focus()
@@ -43,9 +45,7 @@ submit.addEventListener('click', (evt) =>{
             version = type[i].value
         }
     }
-    console.log(version)
     fate = difficulty.value
-    console.log(fate)
 
     //This Function decides layout and symbols for the entire game
     gameDecision(fate, version)
@@ -65,7 +65,9 @@ submit.addEventListener('click', (evt) =>{
 
     player1.textContent = 0
     player2.textContent = 0
-    players.classList.add('inactive') 
+    players.classList.add('inactive')
+    one.classList.replace('off', 'active')
+    two.classList.remove('off') 
 })
 
 //Variables for Game Play
@@ -75,6 +77,7 @@ var person1;
 var person2;
 var player1Score = 0;
 var player2Score = 0;
+var bonuses = 0;
 let totalRounds;
 let totalGameRounds;
 let tiered = false
@@ -202,8 +205,9 @@ function generateDeck (deck) {
 }
 
 let firstTurn = true;
-let gameRound = 0
+let gameRound = 0;
 let matchRound = 0;
+let totalBonus;
 //Function to check if colors match
 function check(evt) {
     const choice = evt.target
@@ -213,19 +217,26 @@ function check(evt) {
     //Check to see if cards match
     if(choices.length === 2) {
         if (choices[0].getAttribute('name') === choices[1].getAttribute('name')) {
+            bonuses++
             choices[0].classList.remove('flipped')
             choices[1].classList.remove('flipped')
-            points(firstTurn);
+            points(firstTurn, bonuses);
             choices = [];
             matchRound++
+            bonusTally(bonuses)
             if (matchRound == totalGameRounds) {
+                    bonus(totalBonus, firstTurn)
+                    totalBonus = 0
+                    bonuses = 0
+                    tally.textContent = ''
+                    bonuses = 0
                     matchRound = 0
                     gameRound++
-                    setTimeout(clear, 1250)
+                    setTimeout(clear, 2250)
                     if (gameRound != totalRounds){
                         update(person1, person2)
-                        setTimeout(gameDecision, 1500, fate, version, gameRound)
-                        setTimeout(clearUpdate, 2000)
+                        setTimeout(gameDecision, 2250, fate, version, gameRound)
+                        setTimeout(clearUpdate, 2300)
                     }
                     else {
                         winnerGreetings()
@@ -234,6 +245,9 @@ function check(evt) {
                 }
             }
         else {
+            bonus(totalBonus, firstTurn)
+            totalBonus = 0
+            bonuses = 0
             setTimeout(close, 1200, choices)
             choices = [];
             //Switch turns
@@ -249,22 +263,41 @@ function close (choices) {
 }
 
 //Point awarding functions
-function points(firstTurn) {
+function points(firstTurn, bonuses) {
     if(firstTurn == true){
         player1Score += 10
         player1.textContent = player1Score
-        console.log('player one scored')
     }
     else {
         player2Score += 10
         player2.textContent = player2Score
-        console.log('player two scored')
     }
 }
+function bonus(totalBonus, firstTurn) {
+    if(totalBonus > 0){
+        if(firstTurn == true){
+            player1Score += totalBonus
+            player1.textContent = player1Score
+        }
+        else{
+            player2Score += totalBonus
+            player2.textContent = player2Score
+        }
+    }
+}
+    
 
 //functions for switching turns
 function switchTurn() {
     firstTurn = !firstTurn
+    if(firstTurn == true){
+        one.classList.add('active')
+        two.classList.remove('active')
+    }
+    else{
+        two.classList.add('active')
+        one.classList.remove('active')
+    }
 }
 
 //function clear board & Round changes
@@ -312,7 +345,7 @@ function winnerGreetings() {
     let byline = document.createElement('h2')
     let diff;
     if(player1Score > player2Score){
-        dif = player1Score - player2Score
+        diff = player1Score - player2Score
         headline.textContent = `${person1} Wins!!!`
         byline.textContent = `You beat ${person2} by ${diff} points!!!`
     }
@@ -321,9 +354,10 @@ function winnerGreetings() {
         byline.textContent = `The score was ${player1Score} to ${player2Score}`
     }
     else {
+        diff = player2Score - player1Score
         headline.textContent = `${person2} Wins!!!`
         byline.textContent = `You beat ${person1} by ${diff} points!!!`
-        dif = player2Score - player1Score
+        
     }
     statusBoard.append(headline, byline)
     statusBoard.classList.add('active')
@@ -333,30 +367,39 @@ function winnerGreetings() {
 function gameDecision(fate, version){
     const grid = document.querySelector('.grid-container')
     if (fate == 'tier'){
-        if (version ==' colors'){
+        if (version == 'colors'){
             if(gameRound == 0){
+                totalRounds = 3
+                totalGameRounds = 3
                 grid.classList.add('grid-container-small')
                 generateDeck(colors1)
+                console.log(`hello`)
             }
             else if(gameRound == 1) {
+                totalGameRounds = 6
                 grid.classList.remove('grid-container-small')
                 generateDeck(colors2)
             }
             else {
+                totalGameRounds = 9
                 grid.classList.add('grid-container-large')
                 generateDeck(colors3)
             }
         }
         else {
             if(gameRound == 0){
+                totalRounds = 3
+                totalGameRounds = 3
                 grid.classList.add('grid-container-small')
                 generateDeck(images1)
             }
             else if(gameRound == 1) {
+                totalGameRounds = 6
                 grid.classList.remove('grid-container-small')
                 generateDeck(images2)
             }
             else {
+                totalGameRounds = 9
                 grid.classList.add('grid-container-large')
                 generateDeck(images3)
             }
@@ -374,7 +417,7 @@ function gameDecision(fate, version){
                 generateDeck(colors2)
             }
             else {
-                totalGameRounds = 3
+                totalGameRounds = 9
                 grid.classList.add('grid-container-large')
                 generateDeck(colors3)
             }
@@ -394,6 +437,23 @@ function gameDecision(fate, version){
                 grid.classList.add('grid-container-large')
                 generateDeck(images3)
             }
+        }
+    }
+}
+
+let tally = document.createElement('p')
+function bonusTally(bonuses){
+    if(bonuses > 1){
+        for(let i = 0; i < bonuses; i++){
+            totalBonus += (i * 5)
+        }
+        tally.textContent = ''
+        tally.textContent = `Bonus + ${totalBonus}`
+        if(firstTurn == true){
+            one.appendChild(tally)
+        }
+        else{
+            two.appendChild(tally)
         }
     }
 }

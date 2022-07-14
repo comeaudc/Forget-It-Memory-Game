@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Koulen&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Forget It!</title>
+        <title>Forget About It!</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
@@ -12,15 +15,15 @@
     <body>
         <div class="start" id="startup">
             <h1 class="banner">Forget About It!</h1>
-            <h2>This game was designed to test your noggin and your patience.</h2>
-            <div>
+            <h2 class="content">This game was designed to test your noggin <br> and your patience.</h2>
+            <div class="buttons">
                 <button class="ready">Quick Play?</button>
                 <button id="next">How to Play</button>
             </div>
         </div>
         <div class="play" id="rules">
             <h1 class="banner">How To Play:</h1>
-                <ol>
+                <ol class="content2">
                     <li>Enter player names when prompted.</li>
                     <li>Player located on lefthand side goes first.</li>
                     <li>Click on 2 squares to reveal what is underneath.</li>
@@ -28,48 +31,61 @@
                     <li>If they do not match, next player goes.</li>
                     <li>When all tiles are flipped player with the most points wins!</li>
                 </ol>
+                <p class="content2">For every consecutive match, your bonus points double! Then awarded at the end of your turn!<br>
+                Example: 1st consecutive match - 5 pts. 2nd match - 10pts...</p>
             <button class="ready" id="focus">Ready to Play?</button>
         </div>
         <div id="players">
-            <h1>Game SetUp</h1>
-            <h2>Player 1 Name:</h2>
-            <input type="text" name="Player1" id="playerName1" placeholder="Player 1">
-            <h2>Player 2 Name:</h2>
-            <input type="text" name="Player2" id="playerName2" placeholder="Player 2">
-            <div id="dropdowns">
-                <div class="drop">
-                    <h3>Number of Rounds:</h3>
-                    <select name="rounds" id="rounds">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
+            <h1 class="banner">Game SetUp</h1>
+            <div class="content2" id="content2">
+                <h2>Player 1 Name:</h2>
+                <input type="text" name="Player1" id="playerName1" placeholder="Player 1">
+                <h2>Player 2 Name:</h2>
+                <input type="text" name="Player2" id="playerName2" placeholder="Player 2">
+                <div id="dropdowns">
+                    <div class="drop">
+                        <h3>Number of Rounds:</h3>
+                        <div class="arrow">
+                            <select name="rounds" id="rounds">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>    
+                    </div>
+                    <div class="drop">
+                    <h3>Difficulty:</h3>
+                        <div class="arrow">
+                            <select name="difficulty" id="difficulty">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="tier">Tiered</option>
+                            </select>
+                        </div>    
+                    </div>
                 </div>
-                <div class="drop">
-                <h3>Difficulty:</h3>
-                    <select name="difficulty" id="difficulty">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="tier">Tiered</option>
-                    </select>
+            
+                <div id="gamePieces">
+                    <h3>Game Pieces</h3>
+                    <input type="radio" id="colors" name="type" value="colors" checked>
+                    <label for="colors">Colors</label>
+                    <input type="radio" id="symbols" name="type" value="images">
+                    <label for="symbols">Symbols</label>
                 </div>
-            </div>
-            <div>
-                <h2>Game Pieces</h2>
-                <input type="radio" id="colors" name="type" value="colors" checked>
-                <label for="colors">Colors</label>
-                <input type="radio" id="symbols" name="type" value="images">
-                <label for="symbols">Symbols</label>
-            </div>
-            <button id="submit" type="submit">Submit</button>
+                <button id="submit" type="submit">Submit</button>
+            </div>    
         </div>
 
         <div id="main">
             <section class="grid-container"></section>
-            <div id="score">    
-                <h2 class="player player1"><span id="player1name"></span> <span id="player1"></span></h2>
-                <h2 class="player player2"><span id="player2name"></span> <span id="player2"></span></h2>
+            <div id="score">
+                <div id="one" class="off">
+                    <h2 class="player player1"><span id="player1name"></span> <span id="player1"></span></h2>
+                </div>
+                <div id="two" class="off">
+                     <h2 class="player player2"><span id="player2name"></span> <span id="player2"></span></h2>
+                </div>        
             </div>
         </div>
         <div id="statusBoard"></div>
