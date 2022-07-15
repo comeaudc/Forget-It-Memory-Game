@@ -20,6 +20,7 @@ const statusBoard = document.getElementById('statusBoard')
 const focus1 = document.getElementById('focus')
 const one = document.getElementById('one')
 const two = document.getElementById('two')
+const grid = document.querySelector('.grid-container')
 
 //click events for startup
 next.focus()
@@ -51,12 +52,14 @@ submit.addEventListener('click', (evt) =>{
     gameDecision(fate, version)
 
     if(person1 == '') {
+        person1 = 'Player 1'
         player1name.textContent = 'Player 1:'
     }
     else{
         player1name.textContent = person1 + ':'
     }
     if(person2 == '') {
+        person2 = 'Player 2'
         player2name.textContent = 'Player 2:'
     }
     else{
@@ -234,7 +237,7 @@ function check(evt) {
                     gameRound++
                     setTimeout(clear, 2250)
                     if (gameRound != totalRounds){
-                        update(person1, person2)
+                        update()
                         setTimeout(gameDecision, 2250, fate, version, gameRound)
                         setTimeout(clearUpdate, 2300)
                     }
@@ -245,9 +248,11 @@ function check(evt) {
                 }
             }
         else {
+            console.log(totalBonus)
             bonus(totalBonus, firstTurn)
             totalBonus = 0
             bonuses = 0
+            tally.textContent = ''
             setTimeout(close, 1200, choices)
             choices = [];
             //Switch turns
@@ -309,8 +314,8 @@ function clear (){
 }
 function update() {
     let headline = document.createElement('h1')
-    headline.classList.add('update')
     let byline = document.createElement('h2')
+    headline.classList.add('update')
     byline.classList.add('update')
     let currentRound = gameRound + 1
     if (currentRound == totalRounds){
@@ -319,7 +324,6 @@ function update() {
     else {
         headline.textContent = `Round ${currentRound}`
     }
-
     if (player1Score > player2Score){
         byline.textContent = `${person1} is Winning ${player1Score} to ${player2Score}`
     }
@@ -343,29 +347,38 @@ function removeUpdates(){
 function winnerGreetings() {
     let headline = document.createElement('h1')
     let byline = document.createElement('h2')
+    headline.classList.add('update')
+    byline.classList.add('update')
+    //Make button to try again from top
+    let tryAgain = document.createElement('button')
+    tryAgain.classList.add('buttons')
+    tryAgain.textContent = `Play Again?`
+    tryAgain.addEventListener('click', (evt) =>{
+        startOver()
+    })
+
     let diff;
     if(player1Score > player2Score){
         diff = player1Score - player2Score
         headline.textContent = `${person1} Wins!!!`
-        byline.textContent = `You beat ${person2} by ${diff} points!!!`
+        byline.textContent = `${person1} beat ${person2} by ${diff} points!!!`
     }
     else if (player1Score == player2Score){
         headline.textContent = `You Tied!!!`
-        byline.textContent = `The score was ${player1Score} to ${player2Score}`
+        byline.textContent = `The score was ${player1Score} to ${player2Score}!!!`
     }
     else {
         diff = player2Score - player1Score
         headline.textContent = `${person2} Wins!!!`
-        byline.textContent = `You beat ${person1} by ${diff} points!!!`
+        byline.textContent = `${person2} beat ${person1} by ${diff} points!!!`
         
     }
-    statusBoard.append(headline, byline)
+    statusBoard.append(headline, byline, tryAgain)
     statusBoard.classList.add('active')
 }
 
 //function for deciding what to generate
 function gameDecision(fate, version){
-    const grid = document.querySelector('.grid-container')
     if (fate == 'tier'){
         if (version == 'colors'){
             if(gameRound == 0){
@@ -443,6 +456,7 @@ function gameDecision(fate, version){
 
 let tally = document.createElement('p')
 function bonusTally(bonuses){
+    totalBonus = 0
     if(bonuses > 1){
         for(let i = 0; i < bonuses; i++){
             totalBonus += (i * 5)
@@ -456,4 +470,23 @@ function bonusTally(bonuses){
             two.appendChild(tally)
         }
     }
+}
+
+//Function for starting over
+function startOver(){
+    console.log('startOver')
+    startup.classList.remove('inactive')
+    one.classList.add('off')
+    two.classList.add('off')
+    one.classList.remove('active')
+    two.classList.remove('active')
+    rules.classList.remove('inactive')
+    players.classList.remove('active', 'inactive')
+    grid.classList.remove('grid-container-large', 'grid-container-small')
+    firstTurn = true 
+    player1Score = 0
+    player2Score = 0
+    clearUpdate()
+    clear()
+    next.focus()
 }
