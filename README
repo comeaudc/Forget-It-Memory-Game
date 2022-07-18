@@ -19,7 +19,12 @@ git clone https://github.com/comeaudc/Forget-It-Memory-Game.git
   ## To Run Game:
  1. Right click on index.html
  2. Select **_Open With_** and choose prefered browser
+ 3. Once page has loaded begin game by following instructions on page
 
+ ## Built With:
+* HTML5 - DOM
+* JavaScript - Game Functionality
+* CSS - Styling
 
 ## Attributes
 * "Plane icons created by [Konkapp - Flaticon](https://www.flaticon.com/free-icons/plane)
