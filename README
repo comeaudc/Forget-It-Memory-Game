@@ -21,10 +21,28 @@ git clone https://github.com/comeaudc/Forget-It-Memory-Game.git
  2. Select **_Open With_** and choose prefered browser
  3. Once page has loaded begin game by following instructions on page
 
+## Features:
+* One Player:  
+    * Play against yourself and play for the highest score.
+* TwoPlayer:
+    * Play against a friend. See who has the best memory.
+* Round Selection:
+    * Choose how many rounds you would like to play from 1 - 3.
+* Difficulty:
+    * Choose from a range of difficulties or a teired tournament mode.
+* Game pieces:
+    * Choose between color or symbols for matching.
+
  ## Built With:
 * HTML5 - DOM
 * JavaScript - Game Functionality
 * CSS - Styling
+
+## Contribution Guidelines:
+ This game is continually being updated, here are some game expansions that are in the works:
+ * Local saving for Leaderboard
+ * Timed version
+ * Turned based scoring
 
 ## Attributes
 * "Plane icons created by [Konkapp - Flaticon](https://www.flaticon.com/free-icons/plane)
@@ -36,11 +54,3 @@ git clone https://github.com/comeaudc/Forget-It-Memory-Game.git
 * Whale icons created by [Freepik - Flaticon](https://www.flaticon.com/free-icons/whale)
 * Hedgehog icons created by [Freepik - Flaticon](https://www.flaticon.com/free-icons/hedgehog)
 * Hot air balloon icons created by [Freepik - Flaticon](https://www.flaticon.com/free-icons/hot-air-balloon)
-
-
-
-
-
-
-
-

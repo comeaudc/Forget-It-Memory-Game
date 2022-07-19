@@ -39,10 +39,26 @@
         <div id="players">
             <h1 class="banner">Game SetUp</h1>
             <div class="content2" id="content2">
-                <h2>Player 1 Name:</h2>
-                <input type="text" name="Player1" id="playerName1" placeholder="Player 1">
-                <h2>Player 2 Name:</h2>
-                <input type="text" name="Player2" id="playerName2" placeholder="Player 2">
+
+
+                <div class="gamePieces">
+                    <h3>Players:</h3>
+                    <input type="radio" id="onePlayer" name="people" value="1" checked>
+                    <label for="onePlayer">One Player</label>
+                    <input type="radio" id="twoPlayer" name="people" value="2">
+                    <label for="twoPlayer">Two Player</label>
+                </div>
+
+                <div class="people">
+                    <h2>Player 1 Name:</h2>
+                    <input type="text" name="Player1" id="playerName1" placeholder="Player 1">
+                </div>
+                <div class="people" id="second">  
+                    <h2>Player 2 Name:</h2>
+                    <input type="text" name="Player2" 
+                    id="playerName2" placeholder="Player 2">
+                </div>  
+
                 <div id="dropdowns">
                     <div class="drop">
                         <h3>Number of Rounds:</h3>
@@ -67,7 +83,7 @@
                     </div>
                 </div>
             
-                <div id="gamePieces">
+                <div class="gamePieces">
                     <h3>Game Pieces</h3>
                     <input type="radio" id="colors" name="type" value="colors" checked>
                     <label for="colors">Colors</label>
@@ -85,11 +101,15 @@
                     <h2 class="player player1"><span id="player1name"></span> <span id="player1"></span></h2>
                     
                 </div>
-                <div id="two" class="off">
+                <!-- <div id="two" class="off">
                      <h2 class="player player2"><span id="player2name"></span> <span id="player2"></span></h2>
-                </div>        
+                </div>         -->
             </div>
         </div>
         <div id="statusBoard"></div>
+        <div id="highscore">
+            <h3>HighScore:</h3>
+            <h4 id="leader"></h4>
+        </div>
     </body>
 </html>
