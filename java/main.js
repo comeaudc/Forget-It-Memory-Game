@@ -41,12 +41,12 @@ let firstTurn = true;   //Helps figure out it player 1 or player 2 playing
 let gameRound = 0;      //counter for game rounds
 let matchRound = 0;     //counter for match rounds
 let totalBonus;         //watches current bonus total
-let gameHighscore;
-let highscore = 0;
-let winnerName;
-let onePlayer = false;
-var player2;
-var two;
+let gameHighscore;      //Placeholder for that games highscore
+let highscore = 0;      //Saved highscore
+let winnerName;         //Winner of current game for High score
+let onePlayer = false;  //Keeps track of one or two player game
+var player2;            //Variable for player 2 name
+var two;                //Global variable for Document object div for player 2
 
 //click events for startup
 next.focus()    //Focuses on Instructions Button

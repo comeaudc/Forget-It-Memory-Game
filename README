@@ -9,6 +9,7 @@
  * [git](https://git-scm.com/downloads)  
  
  To clone from GitHub Repository type the following code into your text editor terminal:
+
  `
 git clone https://github.com/comeaudc/Forget-It-Memory-Game.git
  `
@@ -40,9 +41,10 @@ git clone https://github.com/comeaudc/Forget-It-Memory-Game.git
 
 ## Contribution Guidelines:
  This game is continually being updated, here are some game expansions that are in the works:
- * Local saving for Leaderboard
+ * Local saving for the Leaderboard
  * Timed version
  * Turned based scoring
+ * Debug mobile version
 
 ## Attributes
 * "Plane icons created by [Konkapp - Flaticon](https://www.flaticon.com/free-icons/plane)
